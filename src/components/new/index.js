@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useParams, Link, useHistory } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux"
 import { getComment } from "../../redux/ducks/commets"
@@ -48,7 +48,7 @@ export const New = () => {
           history.goBack()
         }}
       >
-        <i style={{ paddingRight: 5}} class="fas fa-chevron-circle-left"></i>
+        <i style={{ paddingRight: 5}} className="fas fa-chevron-circle-left"></i>
         Go back to news
       </button>
       <Container>
