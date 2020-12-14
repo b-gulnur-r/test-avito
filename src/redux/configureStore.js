@@ -1,10 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import newsReducer from './ducks'
+import commentsReducer from './ducks/commets'
 import { watcherSaga } from './sagas/rootSaga'
 
 const reducer = combineReducers({
-    news: newsReducer
+    news: newsReducer,
+    comments: commentsReducer
 })
 
 const sagaMiddleware = createSagaMiddleware();

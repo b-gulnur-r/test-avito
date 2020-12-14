@@ -1,7 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+
 import styled from "styled-components"
 import { Rating } from "./rating"
+import { setCurrentNew } from "../../../redux/ducks"
+import { NewTitle } from "../../ui/new-title"
+import { Footer } from "../../ui/new-footer"
+import { FormatedDate } from "../../ui/date"
+import { SimpleText } from "../../ui/simple-text"
 
 const Container = styled.li`
   padding: 10px;
@@ -10,36 +17,24 @@ const Container = styled.li`
   margin-bottom: 30px;
   border-radius: 5px;
 `
-const NewTitle = styled.div`
-  font-size: 14px;
-  font-weight: 600;
-  padding-bottom: 10px;
-  color: #56a3a6;
-`
-const NewText = styled.div`
-  font-size: 11px;
-  color: #4f6d7a;
-`
-const NewDate = styled.div`
-  font-size: 11px;
-  color: #e3b505;
-`
 
-const Footer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`
-
-export const NewCard = ({ id, title, by, score, time }) => {
+export const NewCard = (item) => {
+  const { id, title, by, score, time } = item
+  const dispatch = useDispatch()
   return (
     <Link to={`news/${id}`}>
-      <Container>
+      <Container
+        onClick={() => {
+          dispatch(setCurrentNew(item))
+        }}
+      >
         <NewTitle>{title}</NewTitle>
         <Footer>
-          <NewText>{by}</NewText>
-          <Rating score={score} />
-          <NewDate>{new Date(time * 1000).toDateString()}</NewDate>
+          <>
+            <SimpleText>{by}</SimpleText>
+            <Rating score={score} />
+            <FormatedDate time={time}/>
+          </>
         </Footer>
       </Container>
     </Link>

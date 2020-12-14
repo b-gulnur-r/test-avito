@@ -13,3 +13,16 @@ export const requestFetchNews = async () => {
   )
   return result
 }
+
+export const requestFetchComments = async (newId) => {
+  const { data } = await axios.get( `https://hacker-news.firebaseio.com/v0/item/${newId}.json?print=pretty`)
+  let comments =[]
+  if(data.kids) {
+    comments = await Promise.all(data.kids.map( async(commentId)=>{
+      const response =  await  axios.get(`https://hacker-news.firebaseio.com/v0/item/${commentId}.json?print=pretty`)
+      return response.data
+    }))
+  }
+
+  return comments
+}
