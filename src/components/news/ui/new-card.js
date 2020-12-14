@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { Rating } from "./rating"
 
@@ -30,15 +31,17 @@ const Footer = styled.div`
   align-items: center;
 `
 
-export const NewCard = ({ title, by, score, time }) => {
-    return (
-        <Container>
-            <NewTitle>{title}</NewTitle>
-            <Footer>
-                <NewText>{by}</NewText>
-                <Rating score={score} />
-                <NewDate>{new Date(time * 1000).toDateString()}</NewDate>
-            </Footer>
-        </Container>
-    )
+export const NewCard = ({ id, title, by, score, time }) => {
+  return (
+    <Link to={`news/${id}`}>
+      <Container>
+        <NewTitle>{title}</NewTitle>
+        <Footer>
+          <NewText>{by}</NewText>
+          <Rating score={score} />
+          <NewDate>{new Date(time * 1000).toDateString()}</NewDate>
+        </Footer>
+      </Container>
+    </Link>
+  )
 }
