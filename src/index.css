@@ -1,0 +1,127 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+}
+
+.app {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-signin {
+  min-height: 400px;
+}
+
+.wrapper-signup {
+  min-height: 700px;
+}
+
+.navigation-site {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.menu__item {
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  cursor: pointer;
+  background-color: rgb(240, 220, 240);
+}
+
+.menu__link {
+  display: flex;
+  padding: 10px 20px;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+input:focus {
+  outline: 0;
+}
+
+::placeholder {
+  color: #d3d3d3;
+}
+
+:-ms-input-placeholder {
+  color: #d3d3d3;
+}
+
+::-ms-input-placeholder {
+  color: #d3d3d3;
+}
+
+.hidden-label {
+  opacity: 0;
+}
+
+.hidden-element {
+  display: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none; 
+}
+
+a:hover {
+  color: #c2bcda;
+}
+
+h2 {
+  margin: 0;
+}
+
+.input-file {
+  width: 0;
+  height: 0;
+}
+
+.content {
+  padding: 20px;
+}
+
+.simple-button {
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  font-size: 14px;
+  color: #9780ea;
+  cursor: pointer;
+  border: 1px solid #d3d3d3;
+  border-radius: 16px;
+}
