@@ -44,3 +44,8 @@ button {
   border: 1px solid #d3d3d3;
   border-radius: 16px;
 }
+
+#root{
+  height: 100%;
+  display: flex;
+}

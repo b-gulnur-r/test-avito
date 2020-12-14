@@ -21,7 +21,7 @@ const Container = styled.li`
 export const NewCard = (item) => {
   const { id, title, by, score, time } = item
   const dispatch = useDispatch()
-  return (
+  return id ? (
     <Link to={`news/${id}`}>
       <Container
         onClick={() => {
@@ -33,10 +33,10 @@ export const NewCard = (item) => {
           <>
             <SimpleText>{by}</SimpleText>
             <Rating score={score} />
-            <FormatedDate time={time}/>
+            <FormatedDate time={time} />
           </>
         </Footer>
       </Container>
     </Link>
-  )
+  ) : null
 }

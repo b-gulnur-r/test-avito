@@ -2,9 +2,10 @@ import React, { useEffect } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux"
-import { getComment } from "../../redux/ducks/commets"
-import { Comment } from "./ui/comment"
 
+import { getComment } from "../../redux/ducks/commets"
+
+import { Comment } from "./ui/comment"
 import { NewTitle } from "../ui/new-title"
 import { Footer } from "../ui/new-footer"
 import { FormatedDate } from "../ui/date"
@@ -35,10 +36,6 @@ export const New = () => {
     newId && dispatch(getComment(newId))
   }, [dispatch, newId])
 
-  if (!currentNew) {
-    return <h2>Loading...</h2>
-  }
-
   const textComments = comments.comments ? comments.comments.length : 0
 
   return (
@@ -48,21 +45,26 @@ export const New = () => {
           history.goBack()
         }}
       >
-        <i style={{ paddingRight: 5}} className="fas fa-chevron-circle-left"></i>
+        <i
+          style={{ paddingRight: 5 }}
+          className="fas fa-chevron-circle-left"
+        ></i>
         Go back to news
       </button>
-      <Container>
-        <NewTitle>{currentNew.title}</NewTitle>
-        <Url href={currentNew.url}>{currentNew.url}</Url>
-        <Footer>
-          <>
-            <SimpleText color="#db504a">{`Comments: ${textComments}`}</SimpleText>
-            <SimpleText>{currentNew.by}</SimpleText>
-            <FormatedDate time={currentNew.time} />
-          </>
-        </Footer>
-        {comments.comments && <Comment comments={comments.comments} />}
-      </Container>
+      {!!currentNew ? (
+        <Container>
+          <NewTitle>{currentNew.title}</NewTitle>
+          <Url href={currentNew.url}>{currentNew.url}</Url>
+          <Footer>
+            <>
+              <SimpleText color="#db504a">{`Comments: ${textComments}`}</SimpleText>
+              <SimpleText>{currentNew.by}</SimpleText>
+              <FormatedDate time={currentNew.time} />
+            </>
+          </Footer>
+          {comments.comments && <Comment comments={comments.comments} />}
+        </Container>
+      ) : <Container><SimpleText color="red">Error: not found</SimpleText></Container>}
     </div>
   )
 }
